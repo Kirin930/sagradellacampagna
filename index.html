@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sagra della Campagna 2026 — Pieve Cesato</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --blue:       #054A9C;
   --blue-dark:  #033470;
   --blue-light: #1a6bcc;
   --blue-pale:  #e8f0fb;
-  --yellow:     #FEEE00;
-  --yellow-dark:#c9bb00;
-  --yellow-pale:#fffde5;
+  --yellow:     #cf057c;
+  --yellow-dark:#9f045f;
+  --yellow-pale:#fde6f4;
   --orange:     #FF6B0A;
   --orange-pale:#fff3ea;
   --navy:       #0d1b35;
@@ -28,14 +28,14 @@
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+body { font-family: 'Poppins', sans-serif; background: var(--off-white); color: var(--text); min-height: 100vh; overflow-x: hidden; }
 
 /* ── TOP NAV ── */
 .topbar { background: var(--blue-dark); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 16px rgba(3,52,112,0.4); }
 .topbar-inner { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; display: flex; align-items: center; height: 60px; gap: 0; }
 .topbar-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; margin-right: auto; flex-shrink: 0; }
-.topbar-logo img { height: 36px; width: auto; filter: brightness(0) invert(1); }
-.topbar-logo-text { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+.topbar-logo img { height: 56px; width: auto; display: block; }
+.topbar-logo-text { font-family: 'Poppins', sans-serif; font-size: 0.98rem; font-weight: 700; color: var(--white); line-height: 1.1; }
 .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; margin-left: 0.75rem; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s ease; }
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -53,15 +53,13 @@ body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: 
 .mobile-nav a:hover, .mobile-nav a.active { color: var(--yellow); background: rgba(254,238,0,0.05); }
 
 /* ── HERO ── */
-.hero { background: linear-gradient(140deg, var(--navy) 0%, var(--blue-dark) 45%, var(--blue) 100%); color: var(--white); text-align: center; padding: 3.5rem 1.5rem 5.5rem; position: relative; overflow: hidden; }
+.hero { background: linear-gradient(140deg, var(--navy) 0%, var(--blue-dark) 45%, var(--blue) 100%); color: var(--white); text-align: center; padding: 2.4rem 1.5rem 4.1rem; position: relative; overflow: hidden; }
 .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 15% 50%, rgba(254,238,0,0.07) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 85% 30%, rgba(255,255,255,0.04) 0%, transparent 60%); pointer-events: none; }
 .hero::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(254,238,0,0.13) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; opacity: 0.5; }
-.hero-logo { width: 100px; height: auto; margin-bottom: 1.25rem; filter: drop-shadow(0 4px 14px rgba(0,0,0,0.35)); position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.6s ease forwards 0.1s; }
 .hero-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--yellow); margin-bottom: 0.75rem; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.6s ease forwards 0.2s; }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 8vw, 4.8rem); font-weight: 900; line-height: 0.95; letter-spacing: -0.02em; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.7s ease forwards 0.3s; }
-.hero h1 em { font-style: italic; color: var(--yellow); }
+.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2.3rem, 7vw, 4.4rem); font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.7s ease forwards 0.3s; }
+.hero h1 em { font-style: normal; color: var(--yellow); }
 .hero-sub { font-size: clamp(0.85rem, 2.4vw, 1rem); font-weight: 300; color: rgba(255,255,255,0.72); margin-top: 0.85rem; position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
-.hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.4rem; background: rgba(254,238,0,0.12); border: 1.5px solid rgba(254,238,0,0.35); padding: 0.4rem 1.2rem; border-radius: 100px; font-size: 0.82rem; font-weight: 600; color: var(--yellow); position: relative; z-index: 1; opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s; }
 .hero-wave { position: absolute; bottom: -1px; left: 0; right: 0; line-height: 0; z-index: 1; }
 .hero-wave svg { width: 100%; height: 56px; }
 
@@ -69,11 +67,11 @@ body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: 
 .day-nav-wrap { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 60px; z-index: 99; box-shadow: var(--shadow-sm); }
 .day-nav { display: flex; max-width: 900px; margin: 0 auto; padding: 0.55rem 1rem; overflow-x: auto; scrollbar-width: none; gap: 0.3rem; }
 .day-nav::-webkit-scrollbar { display: none; }
-.day-btn { flex-shrink: 0; background: none; border: 1.5px solid var(--border); border-radius: 100px; padding: 0.4rem 1rem; cursor: pointer; transition: all 0.2s ease; color: var(--text-soft); font-family: 'DM Sans', sans-serif; display: flex; flex-direction: column; align-items: center; gap: 0; min-width: 72px; }
+.day-btn { flex-shrink: 0; background: none; border: 1.5px solid var(--border); border-radius: 100px; padding: 0.4rem 1rem; cursor: pointer; transition: all 0.2s ease; color: var(--text-soft); font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; gap: 0; min-width: 72px; }
 .day-btn:hover { border-color: var(--blue-light); color: var(--blue); background: var(--blue-pale); }
 .day-btn.active { background: var(--blue); border-color: var(--blue); color: var(--white); box-shadow: 0 3px 12px rgba(5,74,156,0.28); }
 .day-btn .dn-short { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
-.day-btn .dn-num { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 700; line-height: 1.05; }
+.day-btn .dn-num { font-family: 'Poppins', sans-serif; font-size: 1.35rem; font-weight: 700; line-height: 1.05; }
 .day-btn .dn-month { font-size: 0.58rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.7; }
 .day-btn.active .dn-short, .day-btn.active .dn-month { opacity: 0.75; }
 
@@ -83,7 +81,7 @@ main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
 .day-panel.active { display: block; animation: fadeIn 0.3s ease; }
 .day-heading { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem; }
 .day-heading-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--yellow); border: 2px solid var(--blue); flex-shrink: 0; }
-.day-heading h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 3.5vw, 1.7rem); font-weight: 700; color: var(--blue-dark); }
+.day-heading h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.2rem, 3.5vw, 1.6rem); font-weight: 700; color: var(--blue-dark); }
 .day-heading-line { flex: 1; height: 1.5px; background: linear-gradient(to right, rgba(5,74,156,0.2), transparent); }
 
 /* ── TIMELINE ── */
@@ -128,7 +126,7 @@ main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
 .placeholder-wrap { max-width: 860px; margin: 0 auto; padding: 5rem 1.5rem; text-align: center; }
 .ph-icon { width: 76px; height: 76px; background: var(--blue-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
 .ph-icon svg { width: 36px; height: 36px; }
-.placeholder-wrap h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--blue-dark); margin-bottom: 0.7rem; }
+.placeholder-wrap h2 { font-family: 'Poppins', sans-serif; font-size: 2rem; color: var(--blue-dark); margin-bottom: 0.7rem; font-weight: 700; }
 .placeholder-wrap p { color: var(--text-soft); font-size: 0.97rem; max-width: 380px; margin: 0 auto; line-height: 1.65; }
 .cs-tag { display: inline-block; margin-top: 1.2rem; background: var(--yellow); color: var(--navy); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.32rem 0.95rem; border-radius: 100px; }
 
@@ -145,7 +143,7 @@ footer strong { color: var(--yellow); }
 @media (max-width: 680px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .topbar-logo-text { display: none; }
+  .topbar-logo img { height: 48px; }
   .timeline { padding-left: 2.9rem; }
   .timeline::before { left: 0.95rem; }
   .event-dot { left: -1.95rem; }
@@ -161,7 +159,7 @@ footer strong { color: var(--yellow); }
 <header class="topbar">
   <div class="topbar-inner">
     <a class="topbar-logo" href="#" onclick="showPage('programma');return false;">
-      <img src="https://www.sagracampagna.it/wp-content/uploads/2025/04/LOGOsagracampagna-e1744091059714.png" alt="Sagra" onerror="this.style.display='none'">
+      <img src="logo-sagra-2025.png" alt="Sagra della Campagna">
       <span class="topbar-logo-text">Sagra della Campagna</span>
     </a>
     <nav>
@@ -189,17 +187,10 @@ footer strong { color: var(--yellow); }
 <!-- PAGE: PROGRAMMA -->
 <div class="page active" id="page-programma">
   <section class="hero">
-    <img class="hero-logo"
-      src="https://www.sagracampagna.it/wp-content/uploads/2025/04/LOGOsagracampagna-e1744091059714.png"
-      alt="Logo Sagra della Campagna"
-      onerror="this.style.display='none'">
     <p class="hero-eyebrow">Pieve Cesato &middot; 66ª Edizione</p>
     <h1>Sagra della<br><em>Campagna</em></h1>
     <p class="hero-sub">Cinque giorni di festa, musica, tradizione e autentica cucina romagnola</p>
-    <span class="hero-badge">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      29 Aprile — 3 Maggio 2026
-    </span>
+    
     <div class="hero-wave">
       <svg viewBox="0 0 1200 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,28 C200,56 400,0 600,28 C800,56 1000,0 1200,28 L1200,56 L0,56 Z" fill="#f5f7fc"/>
@@ -260,7 +251,7 @@ footer strong { color: var(--yellow); }
 
 <!-- FOOTER -->
 <footer>
-  <img src="https://www.sagracampagna.it/wp-content/uploads/2025/04/LOGOsagracampagna-e1744091059714.png" alt="Logo" onerror="this.style.display='none'">
+  <img src="logo-sagra-2025.png" alt="Logo">
   <strong>66ª Sagra della Campagna</strong> &middot; Pieve Cesato (RA)<br>
   <span style="font-size:0.7rem;opacity:0.45;display:block;margin-top:0.35rem">Orari e programma possono subire variazioni &middot; &copy; 2026 Pro Loco Pieve Cesato</span>
 </footer>
