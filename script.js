@@ -19,15 +19,15 @@ const IC = {
 };
 const DAYS = [
   { id:"mer29", short:"Mer", num:"29", month:"Aprile", fullName:"Mercoledì 29 Aprile", events:[
-    {time:"19.00", icon:"food", title:"Apertura stand gastronomico", type:"food"},
+    {time:"19.00", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"20.15", icon:"kids", title:"Animazione con GLI AMICI DELL'ALLEGRIA di Formellino", subtitle:'"LA SFUIAREJA E... ALTRE SORPRESE"', type:"highlight"},
     {time:"20.30", icon:"music", title:"Concerto della band MYSTIC DOLL"}
   ]},
   { id:"gio30", short:"Gio", num:"30", month:"Aprile", fullName:"Giovedì 30 Aprile", events:[
-    {time:"12.00", icon:"food", title:"PRANZO in CAMPAGNA", desc:"Pranzo a menù fisso · per info e prenotazioni: 338 2333669", type:"highlight"},
-    {time:"17.30", icon:"run", title:"Apertura iscrizioni 35ª PODISTICA DELLA CAMPAGNA", nota:"Contributo organizzativo: € 3,00 · Premio di partecipazione a tutti gli iscritti"},
-    {time:"19.00", icon:"run", title:"PARTENZA della Camminata Ludicomotoria (10 km) o Mini camminata (2 km)"},
-    {time:"19.00", icon:"food", title:"Apertura stand gastronomico", type:"food"},
+    {time:"12.00", icon:"food", title:"PRANZO in CAMPAGNA", desc:"Pranzo a menù fisso · per info e prenotazioni: 338 2333669", type:"highlight", link:"pranzo-in-campagna.html"},
+    {time:"17.30", icon:"run", title:"Apertura iscrizioni 35ª PODISTICA DELLA CAMPAGNA", nota:"Contributo organizzativo: € 3,00 · Premio di partecipazione a tutti gli iscritti", link:"podistica-campagna-map.html"},
+    {time:"19.00", icon:"run", title:"PARTENZA della Camminata Ludicomotoria (10 km) o Mini camminata (2 km)", link:"podistica-campagna-map.html"},
+    {time:"19.00", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"20.00", icon:"trophy", title:"Premiazioni a tutte le Società partecipanti", subtitle:"(con minimo 10 partecipanti)"},
     {time:"20.30", icon:"music", title:"Concerto di DANIELA PERONI QUARTET"},
     {time:"22.30", icon:"fire", title:"LA FESTA DELLA LUCE", desc:"Acrobazie, Magie, Illusionismo e Giocoleria col FUOCO — presentato da COLLETTIVO STRA-VAGANTE", type:"highlight"},
@@ -35,11 +35,11 @@ const DAYS = [
   ]},
   { id:"ven1", short:"Ven", num:"1", month:"Maggio", fullName:"Venerdì 1° Maggio", events:[
     {time:"11.00", icon:"church", title:"Visita guidata alla Chiesa Arcipretale di Pieve Cesato", subtitle:"Guidata dall'Arciprete Don Claudio"},
-    {time:"11.30", icon:"food", title:"Apertura stand gastronomico", type:"food"},
+    {time:"11.30", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"14.00", icon:"music", title:"Concerto con GLI ALLUVIONATI DEL LISCIO"},
     {time:"Pomeriggio", icon:"kids", title:"BUSKERS, ANIMAZIONI, GIOCOLERIA, TRUCCABIMBI — LAURA e i giochi di HAPPY FAMILY"},
     {time:"16.00", icon:"donkey", title:"L'ATTESISSIMA CORSA DEI SOMARI — 66ª edizione", nota:"L'orario di inizio potrà subire variazioni in caso di maltempo", type:"highlight"},
-    {time:"17.30", icon:"food", title:"Apertura stand gastronomico", type:"food"},
+    {time:"17.30", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"17.30", icon:"show", title:"Spettacolo di strada INTORNO", subtitle:"Giocoleria, equilibrismo, acrobazie… Compagnia MA.Re."},
     {time:"18.30", icon:"piano", title:"Piano bar e music con il gruppo DUODè"},
     {time:"20.30", icon:"show", title:"LA METALLURGICA VIGANÒ E MARIA PIA TIMO — HOTEL VIGANÒ", type:"highlight"},
@@ -47,10 +47,10 @@ const DAYS = [
   ]},
   { id:"sab2", short:"Sab", num:"2", month:"Maggio", fullName:"Sabato 2 Maggio", events:[
     {time:"9.00", icon:"car", title:"16° RADUNO DI AUTO, MOTO e… MEZZI AGRICOLI DI INTERESSE STORICO", nota:"Iscrizione gratuita", type:"highlight"},
-    {time:"11.30", icon:"food", title:"Apertura stand gastronomico", type:"food"},
+    {time:"11.30", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"13.30", icon:"trophy", title:"Premiazioni radunisti"},
     {time:"14.15", icon:"map", title:"PARTENZA del GIRO TURISTICO — Visita al MUSEO VAROLI di COTIGNOLA"},
-    {time:"18.30", icon:"food", title:"Apertura stand gastronomico", type:"food"},
+    {time:"18.30", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"19.15", icon:"show", title:"ANDRO presenta SANTA CLOWN", subtitle:"Uno spettacolo comico e poetico", desc:"Nella lunga notte dei regali, lo spirito del Clown si sveglia ed osserva con meraviglia la propria stanza addobbata a festa"},
     {time:"20.00", icon:"music", title:"LELINO E LA SUA GIUNTA BAND — concerto LÀSA STÉ", type:"highlight"},
     {time:"21.30", icon:"music", title:"L'ORCHESTRA CORELLI — DREAMING MELODIES", subtitle:"Musiche dal magico mondo DISNEY", type:"highlight"},
@@ -58,7 +58,7 @@ const DAYS = [
   ]},
   { id:"dom3", short:"Dom", num:"3", month:"Maggio", fullName:"Domenica 3 Maggio", events:[
     {time:"9.00", icon:"tractor", title:"4° SagriRADUNO — RADUNO DI TRATTORI D'EPOCA", subtitle:"Raduno ed esposizione di trattori e mezzi agricoli d'epoca", type:"highlight"},
-    {time:"11.30", icon:"food", title:"Apertura stand gastronomico", type:"food"},
+    {time:"11.30", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"14.30", icon:"music", title:"Concerto della band WORK IN PROGRESS"},
     {time:"Pomeriggio", icon:"kids", title:"BUSKERS, ANIMAZIONI, GIOCOLERIA, TRUCCABIMBI — LAURA e i giochi di NONNO BANTER"},
     {time:"14.30", icon:"horse", title:"HOBBY HORSES — 3° raduno degli ASINI con bastone", desc:"Con GARA di Asini a Bastone e carota e altre novità (ideazione artistica a cura di Luigi Berardi)"},
@@ -66,7 +66,7 @@ const DAYS = [
     {time:"15.30", icon:"church", title:"Visita guidata alla Chiesa Arcipretale di Pieve Cesato", subtitle:"Guidata dall'Arciprete Don Claudio"},
     {time:"16.00", icon:"games", title:"Giochi a premi (area green) — GIMKANA COL TOSAERBA (gara a coppie)"},
     {time:"17.30", icon:"kids", title:"CARLETTO E L'UOVO D'ORO — ALL'INCIRCO", subtitle:"Spettacolo di Burattini in baracca · Angolo dei Bambini", type:"highlight"},
-    {time:"18.00", icon:"food", title:"Apertura stand gastronomico", type:"food"},
+    {time:"18.00", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"18.30", icon:"show", title:"VITTORIO BONETTI & ALFONSO NADIANI", subtitle:"T'È CUN AL TU CANZUNÈT, MÈ CUN I MÌ FET IN DIALÈT"},
     {time:"20.45", icon:"star", title:"SE STASERA SONO MINA — Tributo a Mina", subtitle:"I più grandi successi interpretati da Daniela Peroni", type:"highlight"}
   ]}
@@ -95,8 +95,10 @@ function buildPanels() {
     tl.className = 'timeline';
     d.events.forEach((ev, idx) => {
       const fd = ev.type === 'food';
-      const card = document.createElement('div');
-      card.className = 'event-card' + (fd ? ' food' : '');
+      const isLinked = ev.link && ev.link.trim() !== '';
+      const card = document.createElement(isLinked ? 'a' : 'div');
+      card.className = 'event-card' + (fd ? ' food' : '') + (isLinked ? ' event-link' : '');
+      if (isLinked) card.href = ev.link;
       card.dataset.day = d.id;
       card.dataset.index = String(idx);
       card.dataset.time = ev.time;

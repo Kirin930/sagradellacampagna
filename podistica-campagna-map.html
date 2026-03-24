@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Podistica della Campagna — 10 km · Pieve Cesato</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="icon" type="image/png" href="assets/images/logo-sagra-2025.png"/>
+
+  <style>
+    :root {
+      --blue:        #B7CD02;
+      --blue-dark:   #8EA100;
+      --blue-light:  #D0E53A;
+      --blue-pale:   #f3f8d2;
+      --yellow:      #E00556;
+      --yellow-dark: #B00445;
+      --yellow-pale: #ffe6ef;
+      --orange:      #FF6B0A;
+      --orange-pale: #fff3ea;
+      --navy:        #0d1b35;
+      --white:       #fff;
+      --off-white:   #f5f7fc;
+      --text:        #0d1b35;
+      --text-soft:   #4a5775;
+      --border:      rgba(183,205,2,0.18);
+      --shadow-sm:   0 2px 8px rgba(183,205,2,0.12);
+      --shadow-md:   0 6px 22px rgba(183,205,2,0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html  { scroll-behavior: smooth; }
+    body  { font-family: 'Poppins', sans-serif; background: var(--off-white); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+    a     { text-decoration: none; }
+    img   { max-width: 100%; }
+
+    /* TOPBAR */
+    .topbar { background: var(--blue-dark); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 16px rgba(142,161,0,.35); }
+    .topbar-inner { max-width: 1140px; margin: 0 auto; padding: 0 1.25rem; display: grid; grid-template-columns: 1fr auto; align-items: center; height: 66px; gap: 1rem; }
+            .nav-links { display: flex; align-items: center; list-style: none; height: 66px; }
+    .nav-links a { display: flex; align-items: center; gap: .38rem; height: 100%; padding: 0 1rem; color: rgba(255,255,255,.75); font-size: .84rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; transition: .2s; border-bottom: 3px solid transparent; white-space: nowrap; cursor: pointer; }
+    .nav-links a:hover  { color: var(--yellow); background: rgba(255,255,255,.04); }
+    .nav-links a.active { color: var(--yellow); border-bottom-color: var(--yellow); background: rgba(224,5,86,.05); }
+        
+    /* HERO */
+    .hero { background: linear-gradient(140deg, var(--navy) 0%, var(--blue-dark) 45%, var(--blue) 100%); color: var(--white); padding: 3.1rem 1.5rem 4.4rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 70% 60% at 15% 50%, rgba(254,238,0,.07) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 85% 30%, rgba(255,255,255,.04) 0%, transparent 60%); }
+    .hero::after  { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5; background-image: radial-gradient(circle, rgba(254,238,0,.13) 1px, transparent 1px); background-size: 28px 28px; }
+    .hero-inner   { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: minmax(210px,300px) minmax(0,1fr); align-items: center; gap: 2.4rem; position: relative; z-index: 1; }
+    .hero-eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--yellow); margin-bottom: .75rem; opacity: 0; animation: fadeUp .6s ease forwards .2s; }
+    .hero h1      { font-size: clamp(2.6rem,7.5vw,5rem); font-weight: 700; line-height: .95; letter-spacing: -.03em; opacity: 0; animation: fadeUp .7s ease forwards .3s; }
+    .hero h1 em   { font-style: normal; color: var(--yellow); }
+    .hero-sub     { font-size: clamp(.98rem,2.6vw,1.12rem); font-weight: 300; color: rgba(255,255,255,.72); margin-top: .85rem; opacity: 0; animation: fadeUp .7s ease forwards .4s; }
+                    .hero-wave { position: absolute; bottom: -1px; left: 0; right: 0; line-height: 0; z-index: 1; }
+    .hero-wave svg { width: 100%; height: 56px; }
+
+    .podistica-topbar-inner { grid-template-columns: 1fr auto; }
+    .podistica-topbar-nav { justify-self: end; }
+    .mobile-nav { display: none; background: var(--navy); border-top: 1px solid rgba(255,255,255,.07); }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: flex; align-items: center; gap: .65rem; padding: .85rem 1.5rem; color: rgba(255,255,255,.78); font-size: .88rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .mobile-nav a:hover, .mobile-nav a.active { color: var(--yellow); background: rgba(254,238,0,.05); }
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; justify-self: end; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .hero-brand-logo { width: min(100%,280px); height: auto; display: block; filter: drop-shadow(0 8px 24px rgba(0,0,0,.24)); justify-self: center; opacity: 0; animation: fadeUp .6s ease forwards .12s; }
+    .podistica-hero .hero-copy { text-align: left; }
+
+    /* CONTENT */
+    .content-wrap { max-width: 1140px; margin: 0 auto; padding: 2.2rem 1.25rem 3rem; display: grid; grid-template-columns: minmax(0,1fr) 320px; gap: 1.4rem; align-items: start; position: relative; z-index: 1; }
+
+    /* MAP CARD */
+    .map-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-md); overflow: hidden; }
+    .map-card-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem .75rem; border-bottom: 1px solid var(--border); }
+    .map-card-title  { font-size: 1.08rem; font-weight: 700; color: var(--blue-dark); display: flex; align-items: center; gap: .55rem; }
+    .icon-wrap { width: 34px; height: 34px; border-radius: 50%; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    #map { width: 100%; height: 660px; display: block; }
+    .map-legend { padding: .85rem 1.2rem; display: flex; flex-wrap: wrap; gap: .65rem 1.2rem; border-top: 1px solid var(--border); }
+    .leg-item { display: flex; align-items: center; gap: .5rem; font-size: .74rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: .06em; }
+    .leg-line { width: 20px; height: 4px; border-radius: 2px; }
+    .leg-dot  { width: 10px; height: 10px; border-radius: 50%; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 1rem; }
+    .side-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 20px; box-shadow: var(--shadow-sm); overflow: hidden; }
+    .side-card-head { padding: .9rem 1.1rem .7rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: .5rem; }
+    .side-card-head h3 { font-size: .93rem; font-weight: 700; color: var(--blue-dark); }
+    .side-card-body { padding: .95rem 1.1rem; }
+    .info-list { display: flex; flex-direction: column; gap: .7rem; }
+    .info-item { display: flex; flex-direction: column; gap: .18rem; padding: .6rem .7rem; background: var(--off-white); border: 1px solid var(--border); border-radius: 12px; }
+    .info-item strong { font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--yellow-dark); }
+    .info-item span { font-size: .84rem; color: var(--text); line-height: 1.45; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,.5); text-align: center; padding: 2.8rem 1.5rem; font-size: .85rem; line-height: 1.8; }
+    .footer-main-logo { height: 44px; width: auto; display: block; margin: 0 auto .7rem; }
+    footer strong { color: var(--yellow); }
+    .footer-partners { max-width: 920px; margin: 1.35rem auto 0; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.08); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: center; }
+    .footer-partner-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: .9rem; min-height: 110px; display: flex; align-items: center; justify-content: center; }
+    .footer-partner-card img { max-width: 100%; max-height: 64px; width: auto; height: auto; display: block; }
+    .footer-partner-card.usgb img { max-height: 74px; }
+    footer small  { font-size: .76rem; opacity: .45; display: block; margin-top: .35rem; }
+
+    /* LEAFLET */
+    .leaflet-popup-content-wrapper { font-family: 'Poppins', sans-serif !important; border-radius: 14px !important; box-shadow: var(--shadow-md) !important; border: 1.5px solid var(--border) !important; }
+    .leaflet-popup-content { margin: 12px 16px !important; font-size: 13px !important; }
+    .popup-title { font-weight: 700; color: var(--blue-dark); font-size: .93rem; }
+    .popup-sub   { color: var(--text-soft); font-size: .74rem; margin-top: 2px; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(13px); } to { opacity:1; transform:translateY(0); } }
+
+    @media (max-width: 900px) { .content-wrap { grid-template-columns: 1fr; } .hero-inner { grid-template-columns: 1fr; } .podistica-hero .hero-copy { text-align: center; } .hero-brand-logo { width:min(68vw,220px); } }
+    @media (max-width: 600px) { #map { height: 420px; } .topbar-inner { grid-template-columns: 1fr auto; height: auto; min-height: 60px; padding-top: .5rem; padding-bottom: .5rem; } .topbar-nav { display: none; } .hamburger { display: flex; } .hero { padding-top: 2.6rem; } .content-wrap { padding-top: 1.4rem; } .footer-partners { grid-template-columns: 1fr; } .footer-partner-card { min-height: 96px; } }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner podistica-topbar-inner">
+    <nav class="topbar-nav podistica-topbar-nav">
+      <ul class="nav-links">
+        <li><a href="index.html"><span class="ni">📅</span>Programma</a></li>
+        <li><a href="mangiare.html"><span class="ni">🍽️</span>Mangiare</a></li>
+        <li><a href="podistica-campagna-map.html" class="active"><span class="ni">🏃</span>Podistica</a></li>
+        <li><a href="index.html#dove-siamo"><span class="ni">📍</span>Dove Siamo</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">📅 Programma</a>
+    <a href="mangiare.html">🍽️ Mangiare</a>
+    <a href="podistica-campagna-map.html" class="active">🏃 Podistica</a>
+    <a href="index.html#dove-siamo">📍 Dove Siamo</a>
+  </nav>
+</header>
+
+<section class="hero podistica-hero">
+  <div class="hero-inner podistica-hero-inner">
+    <a href="index.html"><img class="hero-brand-logo" src="assets/images/logo-sagra-2025.png" alt="Logo Sagra della Campagna"></a>
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Pieve Cesato &middot; 66ª Edizione</p>
+      <h1>Podistica della<br><em>Campagna</em></h1>
+      <p class="hero-sub">10 km tra le campagne faentine lungo il Fiume Lamone — partenza e arrivo a Pieve Cesato</p>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1200 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,28 C200,56 400,0 600,28 C800,56 1000,0 1200,28 L1200,56 L0,56 Z" fill="#f5f7fc"/>
+    </svg>
+  </div>
+</section>
+
+
+<div class="content-wrap" id="percorso">
+
+  <div class="map-card">
+    <div class="map-card-header">
+      <div class="map-card-title"><div class="icon-wrap">🗺️</div>Planimetria del Percorso</div>
+      
+    </div>
+    <div id="map"></div>
+    <div class="map-legend">
+      <div class="leg-item"><div class="leg-line" style="background:#E00556"></div>Percorso gara</div>
+      <div class="leg-item"><div class="leg-line" style="background:#B7CD02"></div>Direzione</div>
+      <div class="leg-item"><div class="leg-dot"  style="background:#B7CD02"></div>Partenza / Arrivo</div>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="side-card" id="info">
+      <div class="side-card-head"><span>ℹ️</span><h3>Informazioni utili</h3></div>
+      <div class="side-card-body">
+        <div class="info-list">
+          <div class="info-item"><strong>Ritrovo</strong><span>presso il Campo Sportivo Parrocchiale di Pieve Cesato</span></div>
+          <div class="info-item"><strong>Iscrizioni</strong><span>dalle ore 17:30</span></div>
+          <div class="info-item"><strong>Contributo Organizzativo</strong><span>€ 3,00 per tutti</span></div>
+          <div class="info-item"><strong>Partenza</strong><span>ore 19:00</span></div>
+          <div class="info-item"><strong>Premio di partecipazione</strong><span>Generi alimentari per tutti</span></div>
+          <div class="info-item"><strong>Premiazioni Società</strong><span>Tutte (con un minimo di 10 partecipanti) alle ore 20:00</span></div>
+          <div class="info-item"><strong>Assistenza</strong><span>Ambulanza con personale sanitario e DEA</span></div>
+          <div class="info-item"><strong>Informazioni</strong><span>Argnani Roberto cell. 338 1713290</span></div>
+          <div class="info-item"><strong>Servizi</strong><span>Possibilità di fare la doccia a fine gara</span></div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<footer>
+  <img class="footer-main-logo" src="assets/images/logo-sagra-2025.png" alt="Logo Sagra della Campagna">
+  <strong>66ª Sagra della Campagna</strong> &middot; Pieve Cesato (RA)<br>
+  <span style="font-size:0.7rem;opacity:0.45;display:block;margin-top:0.35rem">Orari e programma possono subire variazioni &middot; &copy; 2026 Pro Loco Pieve Cesato</span>
+  <div class="footer-partners">
+    <div class="footer-partner-card">
+      <img src="assets/images/logo-feste-sagre-scuola.png" alt="Comitato Feste e Sagre per la Scuola">
+    </div>
+    <div class="footer-partner-card usgb">
+      <img src="assets/images/logo-usgb.png" alt="USGB Pieve Cesato">
+    </div>
+    <div class="footer-partner-card">
+      <img src="assets/images/logo-feste-sagre-2024.png" alt="Logo Feste e Sagre">
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+window.addEventListener('load', function () {
+  if (typeof L === 'undefined') {
+    document.getElementById('map').innerHTML = '<p style="padding:2rem;color:#4a5775">Impossibile caricare la mappa.</p>';
+    return;
+  }
+  initMap();
+});
+
+function initMap() {
+  // ── REAL coordinates: Pieve Cesato = 44.3349059, 11.956865 ──
+  // All coordinates rebuilt around this anchor.
+  // 1° lat ≈ 111 km  |  1° lng ≈ ~79 km at this latitude
+  // So 1 km ≈ 0.009° lat, 1 km ≈ 0.0127° lng
+
+  const map = L.map('map', {
+    center: [44.3470, 11.9630],
+    zoom: 14,
+    zoomControl: true
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19
+  }).addTo(map);
+
+  map.zoomControl.setPosition('bottomright');
+
+  // ── RACE ROUTE — exact GPS waypoints (points 1–15)
+  const route = [
+    [44.336679991182244, 11.957904218191517],
+    [44.336299030358354, 11.959351576213052],
+    [44.33513956914352, 11.961893136898867],
+    [44.334224406782056, 11.961725243368372],
+    [44.33374818542413, 11.962599447613378],
+    [44.33169644744878, 11.965924278401408],
+    [44.33300091631848, 11.966520589912019],
+    [44.33404032944899, 11.967475846206234],
+    [44.33554351189379, 11.965165862788915],
+    [44.33698040233893, 11.96135641643891],
+    [44.3363220044697, 11.959341694072933],
+    [44.33676507809111, 11.957807494501616],
+    [44.338433820546975, 11.958768540227915],
+    [44.34226440272243, 11.96186284798024],
+    [44.34295171682854, 11.962748631089422],
+    [44.346712016306995, 11.965084689357674],
+    [44.344981705993256, 11.972426879404354],
+    [44.346111991233414, 11.973706343927855],
+    [44.34668747606251, 11.973868448026266],
+    [44.34696486604967, 11.973856869162493],
+    [44.34872439859284, 11.974152130198885],
+    [44.34914253855911, 11.973943710643784],
+    [44.349469596453595, 11.97336476743517],
+    [44.34993327034081, 11.972137407832907],
+    [44.35026032382299, 11.971737937018963],
+    [44.35085646732405, 11.971732147564708],
+    [44.352201907627474, 11.972368985094182],
+    [44.3532740979387, 11.972345827365839],
+    [44.35524869832071, 11.971610569471492],
+    [44.35572060552844, 11.971662674360266],
+    [44.35607660318784, 11.972033198013781],
+    [44.35628771705731, 11.972976875443821],
+    [44.356627153448976, 11.974221603342341],
+    [44.356979006169716, 11.974655810748802],
+    [44.357409505492654, 11.974609495331306],
+    [44.35791864959547, 11.974447391232893],
+    [44.35815873227163, 11.974076867579377],
+    [44.35852299376385, 11.973555818691626],
+    [44.35952470119098, 11.971697410991974],
+    [44.36078302018594, 11.966596921225582],
+    [44.35933843462653, 11.966017978016968],
+    [44.35719425624558, 11.96619745040639],
+    [44.355882046636694, 11.965919557666258],
+    [44.35536460572122, 11.965224825784738],
+    [44.35645743551389, 11.963094314777038],
+    [44.35116281644935, 11.958682767437717],
+    [44.3506039350363, 11.959429604203855],
+    [44.34930399777487, 11.962208531605205],
+    [44.34872025860537, 11.96221432103729],
+    [44.34772250652503, 11.961948007154005],
+    [44.347006267409746, 11.962052216931555],
+    [44.34629829991481, 11.962492213770101],
+    [44.34592568200935, 11.962613791843912],
+    [44.34559860434026, 11.962532739794707],
+    [44.34441448505923, 11.961594851771812],
+    [44.34299847891414, 11.960668542638029],
+    [44.342120703502566, 11.960135914874025],
+    [44.340746047747366, 11.960709068650552],
+    [44.34035269145636, 11.960552753984821],
+    [44.3383237595565, 11.958676977988913],
+    [44.3370028457507, 11.957866457496852],
+    [44.33719521673634, 11.957244776978735],
+    [44.337085912848366, 11.95714047037326]
+  ];
+
+  function smoothRoute(points, tension = 0.18, segments = 10) {
+    if (points.length < 3) return points;
+    const result = [points[0]];
+    for (let i = 0; i < points.length - 1; i++) {
+      const p0 = points[i - 1] || points[i];
+      const p1 = points[i];
+      const p2 = points[i + 1];
+      const p3 = points[i + 2] || p2;
+      for (let t = 1; t <= segments; t++) {
+        const st = t / segments;
+        const st2 = st * st;
+        const st3 = st2 * st;
+        const m1lat = (p2[0] - p0[0]) * tension;
+        const m1lng = (p2[1] - p0[1]) * tension;
+        const m2lat = (p3[0] - p1[0]) * tension;
+        const m2lng = (p3[1] - p1[1]) * tension;
+        const a = 2 * st3 - 3 * st2 + 1;
+        const b = st3 - 2 * st2 + st;
+        const c = -2 * st3 + 3 * st2;
+        const d = st3 - st2;
+        result.push([
+          a * p1[0] + b * m1lat + c * p2[0] + d * m2lat,
+          a * p1[1] + b * m1lng + c * p2[1] + d * m2lng
+        ]);
+      }
+    }
+    return result;
+  }
+
+  const smoothPath = smoothRoute(route, 0.16, 8);
+
+  // Drop shadow
+  L.polyline(smoothPath, { color: '#000', weight: 7, opacity: .12, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  // Main route line
+  const routeLine = L.polyline(smoothPath, { color: '#E00556', weight: 5, opacity: .92, lineJoin: 'round', lineCap: 'round' }).addTo(map);
+  // Direction dash overlay (lighter and less dense)
+  L.polyline(smoothPath, { color: '#B7CD02', weight: 2, opacity: .55, dashArray: '18 26', lineJoin: 'round', lineCap: 'round' }).addTo(map);
+
+  // A few direction arrows along the route
+  function arrow(ll, deg) {
+    L.marker(ll, {
+      icon: L.divIcon({
+        className: '',
+        html: `<svg width="18" height="18" viewBox="0 0 20 20" style="transform:rotate(${deg}deg)">
+          <polygon points="10,2 18,18 10,13 2,18" fill="#B7CD02" opacity="0.95"/>
+        </svg>`,
+        iconSize: [18, 18], iconAnchor: [9, 9]
+      }),
+      interactive: false
+    }).addTo(map);
+  }
+
+  function bearing(a, b) {
+    const dLng = (b[1] - a[1]) * Math.PI / 180;
+    const lat1 = a[0] * Math.PI / 180;
+    const lat2 = b[0] * Math.PI / 180;
+    const y = Math.sin(dLng) * Math.cos(lat2);
+    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLng);
+    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+  }
+
+  const arrowCount = 9;
+  const step = Math.max(6, Math.floor(smoothPath.length / (arrowCount + 1)));
+  for (let i = 1; i <= arrowCount; i++) {
+    const idx = Math.min(smoothPath.length - 2, i * step);
+    if (smoothPath[idx] && smoothPath[idx + 1]) {
+      arrow(smoothPath[idx], bearing(smoothPath[idx], smoothPath[idx + 1]));
+    }
+  }
+
+  // ── START / FINISH MARKERS ONLY
+  function poi(ll, emoji, bg, title, sub) {
+    L.marker(ll, {
+      icon: L.divIcon({
+        className: '',
+        html: `<div style="
+          background:${bg};border:2px solid rgba(255,255,255,.6);border-radius:50%;
+          width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+          font-size:16px;box-shadow:0 3px 10px rgba(0,0,0,.3);
+        ">${emoji}</div>`,
+        iconSize: [32, 32], iconAnchor: [16, 16]
+      })
+    }).addTo(map).bindPopup(
+      `<div class="popup-title">${emoji} ${title}</div><div class="popup-sub">${sub}</div>`
+    );
+  }
+
+  poi(route[0], '🏁', '#B7CD02', 'Partenza', 'Inizio gara');
+  poi(route[62], '🏆', '#B7CD02', 'Arrivo', 'Fine gara');
+
+  map.fitBounds(routeLine.getBounds(), { padding: [50, 50] });
+}
+
+function toggleMobile() {
+  const nav = document.getElementById('mobileNav');
+  const burger = document.getElementById('hamburger');
+  if (nav) nav.classList.toggle('open');
+  if (burger) burger.classList.toggle('open');
+}
+
+function jumpTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
