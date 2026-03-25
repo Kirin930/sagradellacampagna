@@ -221,6 +221,54 @@ function toggleMobile() {
   if (nav) nav.classList.toggle('open');
   if (burger) burger.classList.toggle('open');
 }
+function initDesktopDropdowns() {
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
+  if (!dropdowns.length) return;
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    if (!toggle) return;
+    const open = () => {
+      dropdown.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    };
+    const close = () => {
+      dropdown.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.contains('open');
+      dropdowns.forEach(d => {
+        d.classList.remove('open');
+        const t = d.querySelector('.nav-dropdown-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) open();
+    });
+    dropdown.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 680) open();
+    });
+    dropdown.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 680) close();
+    });
+  });
+  document.addEventListener('click', () => {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove('open');
+      const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('open');
+        const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+}
 function startCountdown() {
   const el = document.getElementById('countdown');
   if (!el) return;
@@ -247,5 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
   switchDay(state.activeDayId, activeBtn, false);
   applyScheduleHighlights(state);
   setTimeout(triggerCards, 250);
+  initDesktopDropdowns();
   startCountdown();
 });

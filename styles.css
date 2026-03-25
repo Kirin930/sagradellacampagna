@@ -36,10 +36,11 @@ img{max-width:100%}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav-links{display:flex;align-items:center;list-style:none;height:100%}
-.nav-links li{height:100%}
+.nav-links li{height:100%;position:relative}
 .nav-links a{display:flex;align-items:center;gap:.38rem;height:100%;padding:0 1rem;color:rgba(255,255,255,.75);font-size:.84rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;transition:.2s;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer}
 .nav-links a:hover{color:var(--yellow);background:rgba(255,255,255,.04)}
 .nav-links a.active{color:var(--yellow);border-bottom-color:var(--yellow);background:rgba(254,238,0,.05)}
+.nav-dropdown{display:flex;align-items:stretch}.nav-dropdown-toggle{display:flex;align-items:center;gap:.38rem;height:100%;padding:0 1rem;background:none;border:none;color:rgba(255,255,255,.75);font-size:.84rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;transition:.2s;white-space:nowrap;cursor:pointer;font-family:'Poppins',sans-serif}.nav-dropdown-toggle:hover,.nav-dropdown.open .nav-dropdown-toggle{color:var(--yellow);background:rgba(255,255,255,.04)}.nav-caret{font-size:.9em;opacity:.8}.nav-dropdown-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:240px;padding:.45rem;background:rgba(13,27,53,.98);border:1px solid rgba(255,255,255,.08);border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.26);display:none;flex-direction:column;gap:.18rem;z-index:260}.nav-dropdown.open .nav-dropdown-menu{display:flex}.nav-dropdown-menu a{height:auto;padding:.78rem .9rem;border:none;border-radius:12px;color:rgba(255,255,255,.84);font-size:.82rem;letter-spacing:.04em}.nav-dropdown-menu a:hover,.nav-dropdown-menu a.active{color:var(--yellow);background:rgba(255,255,255,.06)}
 .mobile-nav{display:none;background:var(--navy);border-top:1px solid rgba(255,255,255,.07)}
 .mobile-nav.open{display:block}.mobile-nav a{display:flex;align-items:center;gap:.65rem;padding:.85rem 1.5rem;color:rgba(255,255,255,.78);font-size:.88rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,.05)}
 .mobile-nav a:hover,.mobile-nav a.active{color:var(--yellow);background:rgba(254,238,0,.05)}
