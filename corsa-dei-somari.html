@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corsa dei Somari — Sagra della Campagna 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="assets/images/logo-sagra-2025.png">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner topbar-inner-raduno">
+    <a class="topbar-home-logo" href="index.html" aria-label="Torna alla homepage della Sagra della Campagna">
+      <img src="assets/images/logo-sagra-2025.png" alt="Logo Sagra della Campagna">
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"><span class="ni">📅</span>Programma</a></li>
+        <li><a href="mangiare.html"><span class="ni">🍽️</span>Mangiare</a></li>
+        <li><a href="podistica-campagna-map.html"><span class="ni">🏃</span>Podistica</a></li>
+        <li><a href="raduno-auto-moto.html"><span class="ni">🚗</span>Raduno</a></li>
+        <li><a href="mercatino-manufatti-paesani.html"><span class="ni">🧵</span>Mercatino</a></li>
+        <li><a href="corsa-dei-somari.html" class="active"><span class="ni">🐴</span>Somari</a></li>
+        <li><a href="index.html#dove-siamo"><span class="ni">📍</span>Dove Siamo</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">📅 Programma</a>
+    <a href="mangiare.html">🍽️ Mangiare</a>
+    <a href="podistica-campagna-map.html">🏃 Podistica</a>
+    <a href="raduno-auto-moto.html">🚗 Raduno</a>
+    <a href="mercatino-manufatti-paesani.html">🧵 Mercatino</a>
+    <a href="corsa-dei-somari.html" class="active">🐴 Somari</a>
+    <a href="index.html#dove-siamo">📍 Dove Siamo</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner hero-inner-raduno">
+    <a class="hero-brand-link-raduno" href="index.html"><img class="hero-brand-logo hero-brand-logo-raduno" src="assets/images/logo-sagra-2025.png" alt="Logo Sagra della Campagna"></a>
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Pieve Cesato &middot; 66ª Edizione</p>
+      <h1>Corsa dei<br><em>Somari</em></h1>
+      <p class="hero-sub">Una delle tradizioni più amate della Sagra: spettacolo, memoria rurale e una sfida tutta da seguire sul campo di gara.</p>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1200 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,28 C200,56 400,0 600,28 C800,56 1000,0 1200,28 L1200,56 L0,56 Z" fill="#f5f7fc"/>
+    </svg>
+  </div>
+</section>
+
+<section class="food-page somari-page">
+  <div class="somari-shell food-menu-shell">
+    <div class="somari-layout">
+      <div class="somari-main">
+        <div class="somari-intro-card">
+          <p class="hero-eyebrow">Tradizione della Sagra</p>
+          <h2>Una corsa storica che rende omaggio al mondo contadino</h2>
+          <p>La corsa dei somari si svolge a Pieve Cesato dalla prima edizione della Sagra. Nei primi anni i somari erano montati "a pelo". Poi si è passati all'odierna formula: l'esibizione avviene con i somari guidati dal biroccino.</p>
+          <p>L'esibizione dei somari vuole essere anche un omaggio a questi animali che furono in passato un vero e proprio aiuto per i lavori rurali: ecco il perché del Trofeo dedicato a <strong>Checco Savini</strong>, il promotore. Quest'anno, a ricordo del plurivincitore <strong>Tommaso Benazzi, Masét</strong>, la corsa si avvarrà del titolo di <strong>1° Memorial</strong> a lui dedicato.</p>
+        </div>
+
+        <div class="somari-photo-band">
+          <img class="somari-photo somari-photo-wide" src="assets/images/corsa-somari-1.jpg" alt="Corsa dei somari durante la Sagra della Campagna">
+          <div class="somari-photo-stack">
+            <img class="somari-photo" src="assets/images/corsa-somari-2.jpg" alt="Biroccino e somaro in gara">
+            <img class="somari-photo" src="assets/images/corsa-somari-3.jpg" alt="Preparazione del somaro prima della corsa">
+          </div>
+        </div>
+
+        <div class="somari-regolamento food-menu-shell">
+          <p class="hero-eyebrow">Regolamento</p>
+          <h3>Regole della Corsa dei Somari</h3>
+          <ol class="somari-rules-list">
+            <li>La corsa dei somari si svolge come una sfida a due ad eliminazione diretta.</li>
+            <li>I somari dovranno essere guidati dal biroccino.</li>
+            <li>I somari verranno accoppiati, per il I° turno di gara, mediante sorteggio effettuato dal giudice di gara prima dell'inizio delle gare. Per i turni successivi, il tabellone è già precedentemente fissato.</li>
+            <li>La corsa si svolge compiendo <strong>due giri completi</strong> del campo di gara, salvo diverso accordo preso prima della gara dai giudici e dai guidatori.</li>
+            <li>La partenza dei due quadrupedi avverrà da posizioni diametralmente opposte sulla pista di gara.</li>
+            <li>La posizione di partenza della finale sarà sorteggiata prima della partenza.</li>
+            <li>Il via verrà dato dal giudice arbitro con un fischio.</li>
+            <li>Durante le gare di qualificazione, non comporta squalifica il salto di una “porta” (costituita da una calotta sferica gommosa) per una sola volta. Il secondo salto di porta comporta la squalifica del quadrupede.</li>
+            <li>Non è ammesso salto di porta in finale (pena l'immediata squalifica).</li>
+            <li>Si considera “salto di porta” quando entrambe le ruote del biroccino passano internamente alla “porta” che delimita il campo di gara.</li>
+            <li>Passare con una ruota del biroccino sopra la porta non è un'infrazione che venga considerata “salto di porta”.</li>
+            <li>Per i somari è consentita qualsiasi andatura.</li>
+            <li>Ogni guidatore può farsi accompagnare ed aiutare in campo da un palafreniere di propria fiducia.</li>
+            <li>Non sono consentite stimolazioni con frustino o bastone agli animali durante la gara.</li>
+            <li>La caduta di un fantino dal biroccio e la rottura di una briglia o del biroccio durante il primo giro di gara comportano l'immediata sospensione della gara e la ripetizione della stessa.</li>
+          </ol>
+        </div>
+      </div>
+
+      <aside class="somari-side">
+        <div class="somari-highlight-card">
+          <p class="hero-eyebrow">Spirito della corsa</p>
+          <h3>Una sfida spettacolare, ma con radici profonde</h3>
+          <p>La Corsa dei Somari non è solo intrattenimento: è una tradizione che custodisce la memoria del lavoro nei campi e il legame della comunità con il proprio passato rurale.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="footer-main-logo" src="assets/images/logo-sagra-2025.png" alt="Logo Sagra della Campagna">
+  <strong>66ª Sagra della Campagna</strong> &middot; Pieve Cesato (RA)<br>
+  <span style="font-size:0.7rem;opacity:0.45;display:block;margin-top:0.35rem">Orari e programma possono subire variazioni &middot; &copy; 2026 Pro Loco Pieve Cesato</span>
+  <div class="footer-partners">
+    <div class="footer-partner-card">
+      <img src="assets/images/logo-feste-sagre-scuola.png" alt="Comitato Feste e Sagre per la Scuola">
+    </div>
+    <div class="footer-partner-card usgb">
+      <img src="assets/images/logo-usgb.png" alt="USGB Pieve Cesato">
+    </div>
+    <div class="footer-partner-card">
+      <img src="assets/images/logo-feste-sagre-2024.png" alt="Logo Feste e Sagre">
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
