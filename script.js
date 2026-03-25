@@ -31,14 +31,14 @@ const DAYS = [
     {time:"20.00", icon:"trophy", title:"Premiazioni a tutte le Società partecipanti", subtitle:"(con minimo 10 partecipanti)"},
     {time:"20.30", icon:"music", title:"Concerto di DANIELA PERONI QUARTET"},
     {time:"22.30", icon:"fire", title:"LA FESTA DELLA LUCE", desc:"Acrobazie, Magie, Illusionismo e Giocoleria col FUOCO — presentato da COLLETTIVO STRA-VAGANTE", type:"highlight"},
-    {time:"23.00", icon:"fire", title:"35° LOM A MAZ — ACCENSIONE DEL GRANDE FALÒ", desc:"BALLI ATTORNO AL FUOCO con il DUO TRABADELL ed il Gruppo di Ricerca ANTICHI BALLI · ASPETTANDO MEZZANOTTE E MAGGIO · VINO E CIAMBELLA PER TUTTI…", type:"highlight"}
+    {time:"23.00", icon:"fire", title:"35° LOM A MAZ — ACCENSIONE DEL GRANDE FALÒ", desc:"BALLI ATTORNO AL FUOCO con il DUO TRABADELL ed il Gruppo di Ricerca ANTICHI BALLI · ASPETTANDO MEZZANOTTE E MAGGIO · VINO E CIAMBELLA PER TUTTI…", type:"highlight", link:"lom-a-maz.html"}
   ]},
   { id:"ven1", short:"Ven", num:"1", month:"Maggio", fullName:"Venerdì 1° Maggio", events:[
     {time:"11.00", icon:"church", title:"Visita guidata alla Chiesa Arcipretale di Pieve Cesato", subtitle:"Guidata dall'Arciprete Don Claudio"},
     {time:"11.30", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"14.00", icon:"music", title:"Concerto con GLI ALLUVIONATI DEL LISCIO"},
     {time:"Pomeriggio", icon:"kids", title:"BUSKERS, ANIMAZIONI, GIOCOLERIA, TRUCCABIMBI — LAURA e i giochi di HAPPY FAMILY"},
-    {time:"16.00", icon:"donkey", title:"L'ATTESISSIMA CORSA DEI SOMARI — 66ª edizione", nota:"L'orario di inizio potrà subire variazioni in caso di maltempo", type:"highlight"},
+    {time:"16.00", icon:"donkey", title:"L'ATTESISSIMA CORSA DEI SOMARI — 66ª edizione", nota:"L'orario di inizio potrà subire variazioni in caso di maltempo", type:"highlight", link:"corsa-dei-somari.html"},
     {time:"17.30", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"17.30", icon:"show", title:"Spettacolo di strada INTORNO", subtitle:"Giocoleria, equilibrismo, acrobazie… Compagnia MA.Re."},
     {time:"18.30", icon:"piano", title:"Piano bar e music con il gruppo DUODè"},
