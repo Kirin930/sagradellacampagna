@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Albo d'Oro Barandell — Sagra della Campagna</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="assets/images/logo-sagra-2025.png">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner topbar-inner-raduno">
+    <a class="topbar-home-logo" href="index.html" aria-label="Torna alla homepage della Sagra della Campagna">
+      <img src="assets/images/logo-sagra-2025.png" alt="Logo Sagra della Campagna">
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"><span class="ni">📅</span>Programma</a></li>
+        <li><a href="mangiare.html"><span class="ni">🍽️</span>Mangiare</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="ni">🎪</span>Eventi
+            <span class="nav-caret">▾</span>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="podistica-campagna-map.html"><span class="ni">🏃</span>Podistica</a>
+            <a href="raduno-auto-moto.html"><span class="ni">🚗</span>Raduno</a>
+            <a href="barandell.html" class="active"><span class="ni">🎯</span>Barandell</a>
+            <a href="corsa-dei-somari.html"><span class="ni">🐴</span>Somari</a>
+            <a href="lom-a-maz.html"><span class="ni">🔥</span>Lom a Maz</a>
+          </div>
+        </li>
+        <li><a href="mercatino-manufatti-paesani.html"><span class="ni">🧵</span>Mercatino</a></li>
+        <li><a href="index.html#dove-siamo"><span class="ni">📍</span>Dove Siamo</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">📅 Programma</a>
+    <a href="mangiare.html">🍽️ Mangiare</a>
+    <a href="podistica-campagna-map.html">🏃 Podistica</a>
+    <a href="raduno-auto-moto.html">🚗 Raduno</a>
+    <a href="barandell.html" class="active">🎯 Barandell</a>
+    <a href="corsa-dei-somari.html">🐴 Somari</a>
+    <a href="lom-a-maz.html">🔥 Lom a Maz</a>
+    <a href="mercatino-manufatti-paesani.html">🧵 Mercatino</a>
+    <a href="index.html#dove-siamo">📍 Dove Siamo</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner hero-inner-raduno">
+    <a class="hero-brand-link-raduno" href="index.html"><img class="hero-brand-logo hero-brand-logo-raduno" src="assets/images/logo-sagra-2025.png" alt="Logo Sagra della Campagna"></a>
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Pieve Cesato &middot; Torneo di Barandell</p>
+      <h1>Albo d'Oro<br><em>Barandell</em></h1>
+      <p class="hero-sub">Le edizioni, i vincitori, le provenienze e i punteggi del torneo che custodisce una delle tradizioni più autentiche della Sagra della Campagna.</p>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1200 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,28 C200,56 400,0 600,28 C800,56 1000,0 1200,28 L1200,56 L0,56 Z" fill="#f5f7fc"/>
+    </svg>
+  </div>
+</section>
+
+<section class="food-page albo-page">
+  <div class="albo-shell food-menu-shell">
+    <div class="albo-header">
+      <p class="hero-eyebrow">Albo d'Oro</p>
+      <h2>Vincitori del Torneo di Barandell</h2>
+      <p>Questa pagina raccoglie l'elenco storico delle edizioni del torneo, con <strong>provenienza</strong>, <strong>punteggio</strong> e nome del <strong>vincitore</strong>, a partire dal 1992.</p>
+    </div>
+
+    <div class="albo-timeline">
+      <article class="albo-item"><div class="albo-year">1992</div><div class="albo-body"><h3>Martelli Eugenio</h3><p>Pieve Cesato</p><span>1ª edizione · 13 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">1993</div><div class="albo-body"><h3>Donati Luigi</h3><p>Boncellino</p><span>2ª edizione · 16 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">1994</div><div class="albo-body"><h3>Galassi Simone</h3><p>Pieve Cesato</p><span>3ª edizione · 15 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">1995</div><div class="albo-body"><h3>Montanari Paolo</h3><p>Pieve Cesato</p><span>4ª edizione · 17 punti</span></div></article>
+      <article class="albo-item highlight"><div class="albo-year">1996</div><div class="albo-body"><h3>Montanari Paolo</h3><p>Granarolo F.no</p><span>5ª edizione · 26 punti</span></div></article>
+      <article class="albo-item special"><div class="albo-year">1997</div><div class="albo-body"><h3>Non disputato</h3><p>Pieve Cesato</p><span>6ª edizione · annullata per maltempo</span></div></article>
+      <article class="albo-item"><div class="albo-year">1998</div><div class="albo-body"><h3>Montanari Paolo</h3><p>Faenza</p><span>7ª edizione · 21 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">1999</div><div class="albo-body"><h3>Cicognani Edo</h3><p>Boncellino</p><span>8ª edizione · 16 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2000</div><div class="albo-body"><h3>Cattani Sergio</h3><p>Faenza</p><span>9ª edizione · 21 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2001</div><div class="albo-body"><h3>Tassi Paolo</h3><p>Boncellino</p><span>10ª edizione · 17 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2002</div><div class="albo-body"><h3>Martelli Mauro</h3><p>Faenza</p><span>11ª edizione · 17 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2003</div><div class="albo-body"><h3>Francia Roberto</h3><p>Pieve Cesato</p><span>12ª edizione · 17 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2004</div><div class="albo-body"><h3>Montanari Paolo</h3><p>Granarolo F.no</p><span>13ª edizione · 18 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2005</div><div class="albo-body"><h3>Montanari Romano</h3><p>Pieve Cesato</p><span>14ª edizione · 18 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2006</div><div class="albo-body"><h3>Montanari Romano</h3><p>Pieve Cesato</p><span>15ª edizione · 15 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2007</div><div class="albo-body"><h3>Francia Roberto</h3><p>Granarolo F.no</p><span>16ª edizione · 19 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2008</div><div class="albo-body"><h3>Montanari Paolo</h3><p>Faenza</p><span>17ª edizione · 25 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2009</div><div class="albo-body"><h3>Donati Luigi</h3><p>Pieve Cesato</p><span>18ª edizione · 14 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2010</div><div class="albo-body"><h3>Giuliani Sergio</h3><p>Faenza</p><span>19ª edizione · 15 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2011</div><div class="albo-body"><h3>Martelli Mauro</h3><p>Faenza</p><span>20ª edizione · 18 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2012</div><div class="albo-body"><h3>Casadio Antonio</h3><p>Faenza</p><span>21ª edizione · 18 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2013</div><div class="albo-body"><h3>Cattani Sergio</h3><p>S. Agata sul Santerno</p><span>22ª edizione · 16 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2014</div><div class="albo-body"><h3>Montanari Romano</h3><p>S. Agata sul Santerno</p><span>23ª edizione · 20 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2015</div><div class="albo-body"><h3>Martelli Eugenio</h3><p>S. Bartolo</p><span>24ª edizione · 19 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2016</div><div class="albo-body"><h3>Baldoni Franco</h3><p>Faenza</p><span>25ª edizione · 17 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2017</div><div class="albo-body"><h3>Cattani Sergio</h3><p>S. Agata sul Santerno</p><span>26ª edizione · 13 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2018</div><div class="albo-body"><h3>Cicognani Edo</h3><p>S. Agata sul Santerno</p><span>27ª edizione · 16 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2019</div><div class="albo-body"><h3>Francia Roberto</h3><p>Dati di provenienza e punteggio non presenti nel PDF ricevuto</p><span>28ª edizione</span></div></article>
+      <article class="albo-item"><div class="albo-year">2023</div><div class="albo-body"><h3>Montanari Romano</h3><p>S. Agata sul Santerno</p><span>29ª edizione · 17 punti</span></div></article>
+      <article class="albo-item"><div class="albo-year">2024</div><div class="albo-body"><h3>Martelli Eugenio</h3><p>Longiano</p><span>30ª edizione · 18 punti</span></div></article>
+      <article class="albo-item highlight"><div class="albo-year">2025</div><div class="albo-body"><h3>Baldoni Franco</h3><p>Granarolo F.no</p><span>31ª edizione · 16 punti</span></div></article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="footer-main-logo" src="assets/images/logo-sagra-2025.png" alt="Logo Sagra della Campagna">
+  <strong>66ª Sagra della Campagna</strong> &middot; Pieve Cesato (RA)<br>
+  <span style="font-size:0.7rem;opacity:0.45;display:block;margin-top:0.35rem">Orari e programma possono subire variazioni &middot; &copy; 2026 Pro Loco Pieve Cesato</span>
+  <div class="footer-partners">
+    <div class="footer-partner-card">
+      <img src="assets/images/logo-feste-sagre-scuola.png" alt="Comitato Feste e Sagre per la Scuola">
+    </div>
+    <div class="footer-partner-card usgb">
+      <img src="assets/images/logo-usgb.png" alt="USGB Pieve Cesato">
+    </div>
+    <div class="footer-partner-card">
+      <img src="assets/images/logo-feste-sagre-2024.png" alt="Logo Feste e Sagre">
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
