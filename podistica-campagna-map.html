@@ -63,6 +63,7 @@
     .info-item { display: flex; flex-direction: column; gap: .18rem; padding: .6rem .7rem; background: var(--off-white); border: 1px solid var(--border); border-radius: 12px; }
     .info-item strong { font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--yellow-dark); }
     .info-item span { font-size: .84rem; color: var(--text); line-height: 1.45; }
+    .podistica-share-button { margin-top: 1rem; width: 170px; max-width: 100%; justify-content: center; align-self: flex-start; }
 
     /* LEAFLET */
     .leaflet-popup-content-wrapper { font-family: 'Poppins', sans-serif !important; border-radius: 14px !important; box-shadow: var(--shadow-md) !important; border: 1.5px solid var(--border) !important; }
@@ -71,7 +72,7 @@
     .popup-sub   { color: var(--text-soft); font-size: .74rem; margin-top: 2px; }
 
     @media (max-width: 900px) { .content-wrap { grid-template-columns: 1fr; } .podistica-hero .hero-copy { text-align: center; } }
-    @media (max-width: 600px) { #map { height: 420px; } .content-wrap { padding-top: 1.4rem; } }
+    @media (max-width: 600px) { #map { height: 420px; } .content-wrap { padding-top: 1.4rem; } .podistica-share-button { width: 100%; } }
   </style>
 </head>
 <body>
@@ -167,6 +168,10 @@
           <div class="info-item"><strong>Informazioni</strong><span>Argnani Roberto cell. 338 1713290</span></div>
           <div class="info-item"><strong>Servizi</strong><span>Possibilità di fare la doccia a fine gara</span></div>
         </div>
+        <a class="day-nav-download podistica-share-button" href="assets/pdfs/podistica-2026-flyer.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/></svg>
+          <span>Condividi</span>
+        </a>
       </div>
     </div>
 
