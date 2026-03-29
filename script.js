@@ -21,7 +21,7 @@ const DAYS = [
   { id:"mer29", short:"Mer", num:"29", month:"Aprile", fullName:"Mercoledì 29 Aprile", events:[
     {time:"19.00", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"20.15", icon:"kids", title:"Animazione con GLI AMICI DELL'ALLEGRIA di Formellino", subtitle:'"LA SFUIAREJA E... ALTRE SORPRESE"', type:"highlight"},
-    {time:"20.30", icon:"music", title:"Concerto della band MYSTIC DOLL"}
+    {time:"20.30", icon:"music", title:"Concerto della band MYSTIC DOLL", link:"simple-events/mystic-doll.html"}
   ]},
   { id:"gio30", short:"Gio", num:"30", month:"Aprile", fullName:"Giovedì 30 Aprile", events:[
     {time:"12.00", icon:"food", title:"PRANZO in CAMPAGNA", desc:"Pranzo a menù fisso · per info e prenotazioni: 338 2333669", type:"highlight", link:"pranzo-in-campagna.html"},
