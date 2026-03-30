@@ -51,7 +51,7 @@ const DAYS = [
     {time:"13.30", icon:"trophy", title:"Premiazioni radunisti", link:"raduno-auto-moto.html"},
     {time:"14.15", icon:"map", title:"PARTENZA del GIRO TURISTICO — Visita al MUSEO VAROLI di COTIGNOLA", link:"raduno-auto-moto.html"},
     {time:"18.30", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
-    {time:"19.15", icon:"show", title:"ANDRO presenta SANTA CLOWN", subtitle:"Uno spettacolo comico e poetico", desc:"Nella lunga notte dei regali, lo spirito del Clown si sveglia ed osserva con meraviglia la propria stanza addobbata a festa"},
+    {time:"19.15", icon:"show", title:"ANDRO presenta SANTA CLOWN", subtitle:"Uno spettacolo comico e poetico", desc:"Nella lunga notte dei regali, lo spirito del Clown si sveglia ed osserva con meraviglia la propria stanza addobbata a festa", link:"simple-events/santa-clown.html"},
     {time:"20.00", icon:"music", title:"LELINO E LA SUA GIUNTA BAND — concerto LÀSA STÉ", type:"highlight"},
     {time:"21.30", icon:"music", title:"L'ORCHESTRA CORELLI — DREAMING MELODIES", subtitle:"Musiche dal magico mondo DISNEY", type:"highlight"},
     {time:"23.00", icon:"dj", title:"DJ SET con NICOLAS PAGLIAI"}
