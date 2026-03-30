@@ -68,7 +68,7 @@ const DAYS = [
     {time:"17.30", icon:"kids", title:"CARLETTO E L'UOVO D'ORO — ALL'INCIRCO", subtitle:"Spettacolo di Burattini in baracca · Angolo dei Bambini", type:"highlight"},
     {time:"18.00", icon:"food", title:"Apertura stand gastronomico", type:"food", link:"mangiare.html"},
     {time:"18.30", icon:"show", title:"VITTORIO BONETTI & ALFONSO NADIANI", subtitle:"T'È CUN AL TU CANZUNÈT, MÈ CUN I MÌ FET IN DIALÈT", link:"simple-events/vittorio-bonetti-alfonso-nadiani.html"},
-    {time:"20.45", icon:"star", title:"SE STASERA SONO MINA — Tributo a Mina", subtitle:"I più grandi successi interpretati da Daniela Peroni", type:"highlight"}
+    {time:"20.45", icon:"star", title:"SE STASERA SONO MINA — Tributo a Mina", subtitle:"I più grandi successi interpretati da Daniela Peroni", type:"highlight", link:"simple-events/se-stasera-sono-mina.html"}
   ]}
 ];
 function buildNav() {
